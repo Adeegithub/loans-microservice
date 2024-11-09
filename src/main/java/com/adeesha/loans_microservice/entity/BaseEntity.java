@@ -12,8 +12,13 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @MappedSuperclass
-//Indicated the Spring Data JPA framework that this class is going to act as a
-//superclass for all the entities.
+
+/*
+@MappedSuperclass ->
+Indicated the Spring Data JPA framework that this class is going to act as a
+superclass for all the entities.
+ */
+
 public class BaseEntity {
     @Column(updatable = false)
     private LocalDateTime createdAt;
