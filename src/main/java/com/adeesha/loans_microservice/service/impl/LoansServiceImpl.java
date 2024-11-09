@@ -7,10 +7,12 @@ import com.adeesha.loans_microservice.exception.LoanAlreadyExistsException;
 import com.adeesha.loans_microservice.repository.LoansRepository;
 import com.adeesha.loans_microservice.service.ILoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Random;
 
+@Service
 public class LoansServiceImpl implements ILoanService {
 
     //Dependency Injection
