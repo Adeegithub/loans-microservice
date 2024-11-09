@@ -6,6 +6,7 @@ import com.adeesha.loans_microservice.entity.Loans;
 import com.adeesha.loans_microservice.exception.LoanAlreadyExistsException;
 import com.adeesha.loans_microservice.repository.LoansRepository;
 import com.adeesha.loans_microservice.service.ILoanService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 import java.util.Random;
@@ -13,6 +14,7 @@ import java.util.Random;
 public class LoansServiceImpl implements ILoanService {
 
     //Dependency Injection
+    @Autowired
     private LoansRepository loansRepository;
     @Override
     public void createLoan(String mobileNumber) {
