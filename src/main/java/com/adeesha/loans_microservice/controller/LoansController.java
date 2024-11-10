@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -51,7 +53,9 @@ public class LoansController {
             )
     })
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createLoan(@RequestParam String mobileNumber){
+    public ResponseEntity<ResponseDto> createLoan(@RequestParam
+                                                      @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
+                                                      String mobileNumber){
         iLoanService.createLoan(mobileNumber);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -79,7 +83,9 @@ public class LoansController {
             )
     })
     @GetMapping("/fetch")
-    public ResponseEntity<LoansDto> fetchLoanDetails(@RequestParam String mobileNumber){
+    public ResponseEntity<LoansDto> fetchLoanDetails(@RequestParam
+                                                         @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
+                                                         String mobileNumber){
         LoansDto loansDto = iLoanService.fetchLoan(mobileNumber);
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -111,7 +117,7 @@ public class LoansController {
             )
     })
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateLoanDetails(@RequestBody LoansDto loansDto){
+    public ResponseEntity<ResponseDto> updateLoanDetails(@Valid @RequestBody LoansDto loansDto){
         boolean isUpdated = iLoanService.updateLoan(loansDto);
         if (isUpdated){
             return ResponseEntity
@@ -148,7 +154,9 @@ public class LoansController {
             )
     })
     @DeleteMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteLoan(@RequestParam String mobileNumber){
+    public ResponseEntity<ResponseDto> deleteLoan(@RequestParam
+                                                      @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
+                                                      String mobileNumber){
         boolean isDeleted = iLoanService.deleteLoan(mobileNumber);
         if (isDeleted){
             return ResponseEntity
