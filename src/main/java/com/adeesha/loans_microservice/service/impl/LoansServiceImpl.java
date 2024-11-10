@@ -45,7 +45,7 @@ public class LoansServiceImpl implements ILoanService {
     public LoansDto fetchLoan(String mobileNumber) {
         Loans loans = loansRepository.findByMobileNumber(mobileNumber)
                 .orElseThrow(
-                        () -> new ResourceNotFoundException("Loan","Mobile: ", mobileNumber)
+                        () -> new ResourceNotFoundException("Loan","Mobile Number: ", mobileNumber)
                 );
         return LoansMapper.mapToLoansDto(loans, new LoansDto());
     }
