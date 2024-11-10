@@ -5,7 +5,7 @@ import com.adeesha.loans_microservice.entity.Loans;
 
 public class LoansMapper {
     public static LoansDto mapToLoansDto(Loans loans, LoansDto loansDto){
-        loansDto.setLoanNumber(loans.getMobileNumber());
+        loansDto.setLoanNumber(loans.getLoanNumber());
         loansDto.setLoanType(loans.getLoanType());
         loansDto.setMobileNumber(loans.getMobileNumber());
         loansDto.setTotalLoan(loans.getTotalLoan());
